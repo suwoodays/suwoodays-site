@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPosts, formatDate } from '../../lib/posts';
+
+const posts = getPosts();
+---
+
+<Base title="글 목록" description="아이 동반 장기 해외여행 준비와 비용, 경험담 모음">
+  <h1>글 목록</h1>
+  {
+    posts.length === 0 ? (
+      <p>아직 올라온 글이 없어요.</p>
+    ) : (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li>
+            <a class="title" href={`/blog/${post.slug}/`}>{post.meta.title}</a>
+            <div class="meta">
+              {formatDate(post.meta.date)}
+              {post.meta.tags && post.meta.tags.length > 0 && ` · ${post.meta.tags.join(', ')}`}
+            </div>
+            {post.meta.description && <p class="desc">{post.meta.description}</p>}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Base>

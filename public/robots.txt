@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://suwoodays.com/sitemap-index.xml

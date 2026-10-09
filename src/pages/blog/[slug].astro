@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPosts, formatDate } from '../../lib/posts';
+
+export function getStaticPaths() {
+  return getPosts().map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = post;
+---
+
+<Base title={post.meta.title} description={post.meta.description}>
+  <article>
+    <h1>{post.meta.title}</h1>
+    <div class="post-meta">
+      {formatDate(post.meta.date)}
+      {post.meta.tags && post.meta.tags.length > 0 && ` · ${post.meta.tags.join(', ')}`}
+    </div>
+    <Content />
+  </article>
+  <p style="margin-top:48px"><a href="/blog/">← 글 목록으로</a></p>
+</Base>
