@@ -122,7 +122,8 @@ article blockquote {
   border-left: 4px solid var(--brand);
   color: var(--muted);
 }
-article table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+article table { border-collapse: collapse; width: 100%; font-size: 0.95rem; word-break: keep-all; display: block; overflow-x: auto; }
+article th, article td { min-width: 4.5em; }
 article th, article td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; }
 article th { background: var(--brand-soft); }
 
