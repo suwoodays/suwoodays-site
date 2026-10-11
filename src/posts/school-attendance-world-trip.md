@@ -112,6 +112,6 @@ draft: false
 ## 함께 보면 좋은 글
 
 - 아내의 정리 글: [[세계여행 준비] 초등생 유급 없이 세계일주, 초등학교 최소 출석일수](https://blog.naver.com/PostView.naver?blogId=suwoodays&logNo=224310348527)
-- [아이 둘과 장기 세계여행 출발 전 준비 총정리](/blog/prep-checklist-before-departure/)
+- [아이 동반 장기 세계여행 준비 가이드: 출발 전 체크리스트 총정리](/blog/prep-checklist-before-departure/)
 
 *이 글은 우리 가족의 경험과 공개된 자료를 정리한 것으로, 법률 자문이 아닙니다. 마지막 확인: 2026년 10월 11일.*
