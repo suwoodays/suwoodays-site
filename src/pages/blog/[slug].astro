@@ -11,9 +11,21 @@ export function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = post;
+const url = new URL(`/blog/${post.slug}/`, Astro.site).toString();
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.meta.title,
+  description: post.meta.description,
+  datePublished: new Date(post.meta.date).toISOString(),
+  inLanguage: 'ko',
+  mainEntityOfPage: url,
+  author: { '@type': 'Person', name: 'SUWOODAYS' },
+  publisher: { '@type': 'Organization', name: 'SUWOODAYS', url: 'https://suwoodays.com' },
+};
 ---
 
-<Base title={post.meta.title} description={post.meta.description}>
+<Base title={post.meta.title} description={post.meta.description} ogType="article" jsonLd={jsonLd}>
   <article>
     <h1>{post.meta.title}</h1>
     <div class="post-meta">

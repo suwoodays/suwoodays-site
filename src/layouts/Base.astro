@@ -4,11 +4,13 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  ogType?: 'website' | 'article';
+  jsonLd?: Record<string, unknown>;
 }
 
 const siteName = 'SUWOODAYS';
 const defaultDescription = '아이와 함께하는 장기 해외여행의 준비, 비용, 기록을 담는 가족 여행 노트';
-const { title, description = defaultDescription } = Astro.props;
+const { title, description = defaultDescription, ogType = 'website', jsonLd } = Astro.props;
 const pageTitle = title ? `${title} | ${siteName}` : `${siteName} | 가족 장기여행 노트`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -22,13 +24,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="ko_KR" />
     <meta name="twitter:card" content="summary" />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
     <header class="site">
@@ -49,6 +52,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 
     <footer class="site">
       <div class="wrap">
+        <p class="footer-links"><a href="/about/">소개</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/disclosure/">광고·제휴 안내</a></p>
         <p>© {new Date().getFullYear()} SUWOODAYS. 개인 경험을 기록한 글이며, 비용·규정은 시기에 따라 달라질 수 있으니 출발 전 공식 정보를 확인하세요.</p>
       </div>
     </footer>
