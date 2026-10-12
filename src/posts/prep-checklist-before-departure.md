@@ -19,7 +19,7 @@ draft: false
 | 학교 출결 | 수업일수 3분의 2 출석, 교외체험학습, 유예신청서 | 출발 수개월 전 | [출석일수 계산과 서류 타임라인](/blog/school-attendance-world-trip/) |
 | 입국 조건 | 한국 여권은 태국·말레이시아 90일 무비자, 도착 전 온라인 도착카드 | 출발 3일 전부터 작성 | [태국·말레이시아 입국 가족 가이드](/blog/thailand-malaysia-entry-family-guide/) |
 | 항공권·숙소 | 편도라면 다음 나라로 나가는 항공권 미리 | 출발 전 | [입국 가이드의 출국 항공권 편](/blog/thailand-malaysia-entry-family-guide/#3-출국-항공권-편도로-입국할-때) |
-| 여행자 보험 | 기간·보장 항목·면책 확인 | 출국 전 가입 | 준비 중 |
+| 여행자 보험 | 90일 초과면 장기체류보험, 기간·보장 항목·면책 확인 | 출국 전 가입 | [장기 세계여행 보험, 여행자보험 말고 장기체류보험으로 가입한 이유와 실제 보장표](/blog/long-stay-travel-insurance-family/) |
 | 예방접종 | 생백신은 서로 28일 간격, 황열은 10일 전 | 출발 2~3개월 전 | 준비 중 |
 | 비상약 | 나라별 반입 규정과 처방전 확인 | 출발 전 | 준비 중 |
 | 보관이사 | 계약서·보험·상태 기록 | 출발 1개월 전 | 준비 중 |
@@ -57,6 +57,8 @@ draft: false
 **출처:** [파이낸셜뉴스 (2026.9.2)](https://www.fnnews.com/news/202609020003459802), [아세안익스프레스 (2026.5.26)](https://aseanexpress.co.kr/news/article.html?no=12764), [EmerHub 정리](https://emerhub.com/thailand/visas/visa-exemption/), [트립닷컴 말레이시아 가이드 (2026.3.19)](https://kr.trip.com/guide/info/malaysia-immigration-inspection.html), [트립스토어 (2026.10)](https://www.tripstore.kr/blog/%EB%A7%90%EB%A0%88%EC%9D%B4%EC%8B%9C%EC%95%84-%EC%9E%85%EA%B5%AD-mdac-%EC%84%9C%EB%A5%98-%EA%B3%B5%ED%95%AD-%EC%8B%AC%EC%82%AC-%EA%B0%80%EC%9D%B4%EB%93%9C)
 
 ## 3. 여행자 보험
+
+➡️ 자세한 내용: [장기 세계여행 보험, 여행자보험 말고 장기체류보험으로 가입한 이유와 실제 보장표 (9개월·태국)](/blog/long-stay-travel-insurance-family/)
 
 **우리 경험:** 장기 여행이라 일반 여행자 보험이 아니라 장기체류 보험으로 가입했고, 분실물이나 항공기 지연 같은 항목은 보상이 제한됩니다.
 
