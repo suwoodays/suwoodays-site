@@ -138,3 +138,28 @@ footer.site .wrap { padding-top: 22px; padding-bottom: 32px; }
   body { font-size: 16px; }
   h1 { font-size: 1.6rem; }
 }
+
+/* 홈: 처음 오신 분 카드, 주제별 묶음 */
+.start-card {
+  display: block;
+  background: var(--card);
+  border: 2px solid var(--brand);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 36px;
+  color: var(--text);
+  text-decoration: none;
+}
+.start-card .label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--brand);
+  margin-bottom: 4px;
+}
+.start-card strong { display: block; font-size: 1.1rem; line-height: 1.5; }
+.start-card .desc { display: block; margin-top: 6px; color: var(--muted); font-size: 0.92rem; }
+.start-card:hover strong { color: var(--brand); }
+.topic h2 { margin: 0 0 4px; }
+.topic { margin-bottom: 40px; }
+.topic-desc { margin: 0 0 14px; color: var(--muted); font-size: 0.95rem; }
