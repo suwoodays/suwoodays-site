@@ -163,3 +163,4 @@ footer.site .wrap { padding-top: 22px; padding-bottom: 32px; }
 .topic h2 { margin: 0 0 4px; }
 .topic { margin-bottom: 40px; }
 .topic-desc { margin: 0 0 14px; color: var(--muted); font-size: 0.95rem; }
+.more { text-align: center; margin-top: 8px; }

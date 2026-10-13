@@ -3,7 +3,6 @@ import Base from '../layouts/Base.astro';
 import { getPosts, formatDate } from '../lib/posts';
 
 const all = getPosts();
-const recent = all.slice(0, 3);
 const hub = all.find((p) => p.slug === 'prep-checklist-before-departure');
 
 // 주제별 묶음: 글의 tags 로 자동 분류됩니다. 새 글에 같은 태그만 달면 알아서 들어갑니다.
@@ -49,16 +48,5 @@ const topics = [
     </section>
   ))}
 
-  <section class="topic">
-    <h2>최근 글</h2>
-    <ul class="post-list">
-      {recent.map((post) => (
-        <li>
-          <a class="title" href={`/blog/${post.slug}/`}>{post.meta.title}</a>
-          <div class="meta">{formatDate(post.meta.date)}</div>
-          {post.meta.description && <p class="desc">{post.meta.description}</p>}
-        </li>
-      ))}
-    </ul>
-  </section>
+  <p class="more"><a href="/blog/">전체 글 보기 →</a></p>
 </Base>
