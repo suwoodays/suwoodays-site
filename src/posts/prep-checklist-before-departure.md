@@ -18,11 +18,12 @@ draft: false
 |---|---|---|---|
 | 학교 출결 | 수업일수 3분의 2 출석, 교외체험학습, 유예신청서 | 출발 수개월 전 | [출석일수 계산과 서류 타임라인](/blog/school-attendance-world-trip/) |
 | 입국 조건 | 한국 여권은 태국·말레이시아 90일 무비자, 도착 전 온라인 도착카드 | 출발 3일 전부터 작성 | [태국·말레이시아 입국 가족 가이드](/blog/thailand-malaysia-entry-family-guide/) |
-| 항공권·숙소 | 편도라면 다음 나라로 나가는 항공권 미리 | 출발 전 | [입국 가이드의 출국 항공권 편](/blog/thailand-malaysia-entry-family-guide/#3-출국-항공권-편도로-입국할-때) |
+| 항공권·숙소 | 편도라면 다음 나라로 나가는 항공권 미리 | 출발 전 | [입국 가이드의 출국 항공권 편](/blog/thailand-malaysia-entry-family-guide/#3-출국-항공권-편도로-입국할-때)· [치앙마이 한 달 숙소 고르기](/blog/chiang-mai-month-stay-accommodation-family-of-four/) |
 | 여행자 보험 | 90일 초과면 장기체류보험, 기간·보장 항목·면책 확인 | 출국 전 가입 | [장기 세계여행 보험, 여행자보험 말고 장기체류보험으로 가입한 이유와 실제 보장표](/blog/long-stay-travel-insurance-family/) |
 | 예방접종 | 생백신은 서로 28일 간격, 황열은 10일 전 | 출발 2~3개월 전 | 준비 중 |
 | 비상약 | 나라별 반입 규정과 처방전 확인 | 출발 전 | 준비 중 |
 | 보관이사 | 계약서·보험·상태 기록 | 출발 1개월 전 | 준비 중 |
+| 통신 | 한국 번호는 요금이 낮은 알뜰폰으로 유지, 데이터는 eSIM, 한국 SIM의 데이터 로밍 차단 | 출발 전 설치 | [치앙마이 한 달 eSIM 후기](/blog/chiang-mai-esim-roaming-dokkaebi-review/) |
 | 결제 | 나라별 QR·카드·현금 조합 | 출발 전 | 준비 중 |
 
 ---
