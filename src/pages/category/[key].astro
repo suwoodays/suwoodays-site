@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPosts, formatDate, CATEGORIES, getPostsByCategory } from '../../lib/posts';
+
+export function getStaticPaths() {
+  const used = new Set(getPosts().map((p) => p.meta.category));
+  return CATEGORIES.filter((c) => used.has(c.key)).map((c) => ({ params: { key: c.key }, props: { category: c } }));
+}
+
+const { category } = Astro.props;
+const posts = getPostsByCategory(category.key);
+const all = getPosts();
+const count = (key: string) => all.filter((p) => p.meta.category === key).length;
+---
+
+<Base title={`${category.name} 글 모음`} description={category.desc}>
+  <h1>{category.icon} {category.name}</h1>
+  <p class="topic-desc">{category.desc}</p>
+
+  <nav class="chips" aria-label="카테고리">
+    <a class="chip" href="/blog/">전체 {all.length}</a>
+    {CATEGORIES.filter((c) => count(c.key) > 0).map((c) => (
+      <a class={`chip${c.key === category.key ? ' active' : ''}`} href={`/category/${c.key}/`}>{c.icon} {c.name} {count(c.key)}</a>
+    ))}
+  </nav>
+
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li>
+        <a class="title" href={`/blog/${post.slug}/`}>{post.meta.title}</a>
+        <div class="meta">{formatDate(post.meta.date)}</div>
+        {post.meta.description && <p class="desc">{post.meta.description}</p>}
+      </li>
+    ))}
+  </ul>
+</Base>

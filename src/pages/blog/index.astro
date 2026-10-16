@@ -1,28 +1,126 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getPosts, formatDate } from '../../lib/posts';
+import { getPosts, formatDate, CATEGORIES, getCategory } from '../../lib/posts';
 
 const posts = getPosts();
+const counts = (key: string) => posts.filter((p) => p.meta.category === key).length;
 ---
 
 <Base title="글 목록" description="아이 동반 장기 해외여행 준비와 비용, 경험담 모음">
   <h1>글 목록</h1>
-  {
-    posts.length === 0 ? (
-      <p>아직 올라온 글이 없어요.</p>
-    ) : (
-      <ul class="post-list">
-        {posts.map((post) => (
-          <li>
-            <a class="title" href={`/blog/${post.slug}/`}>{post.meta.title}</a>
-            <div class="meta">
-              {formatDate(post.meta.date)}
-              {post.meta.tags && post.meta.tags.length > 0 && ` · ${post.meta.tags.join(', ')}`}
-            </div>
-            {post.meta.description && <p class="desc">{post.meta.description}</p>}
-          </li>
-        ))}
-      </ul>
-    )
-  }
+
+  <form class="search-box" role="search" onsubmit="return false">
+    <label class="sr-only" for="q">글 검색</label>
+    <input id="q" type="search" placeholder="예: 보험, eSIM, 택시, 숙소" autocomplete="off" />
+  </form>
+
+  <nav class="chips" aria-label="카테고리">
+    <a class="chip active" href="/blog/">전체 {posts.length}</a>
+    {CATEGORIES.filter((c) => counts(c.key) > 0).map((c) => (
+      <a class="chip" href={`/category/${c.key}/`}>{c.icon} {c.name} {counts(c.key)}</a>
+    ))}
+  </nav>
+
+  <div id="results" class="results" hidden></div>
+
+  <ul class="post-list" id="all-list">
+    {posts.map((post) => (
+      <li>
+        {getCategory(post.meta.category) && <span class="badge">{getCategory(post.meta.category)?.name}</span>}
+        <a class="title" href={`/blog/${post.slug}/`}>{post.meta.title}</a>
+        <div class="meta">{formatDate(post.meta.date)}</div>
+        {post.meta.description && <p class="desc">{post.meta.description}</p>}
+      </li>
+    ))}
+  </ul>
 </Base>
+
+<script is:inline>
+  (function () {
+    var input = document.getElementById('q');
+    var box = document.getElementById('results');
+    var all = document.getElementById('all-list');
+    var idx = null;
+    function load() {
+      if (idx) return Promise.resolve(idx);
+      return fetch('/search-index.json').then(function (r) { return r.json(); }).then(function (d) { idx = d; return d; });
+    }
+    function low(s) { return String(s || '').toLowerCase(); }
+    function score(p, terms) {
+      var total = 0;
+      for (var i = 0; i < terms.length; i++) {
+        var t = terms[i], m = 0;
+        if (low(p.title).indexOf(t) > -1) m += 10;
+        if (p.tags.some(function (x) { return low(x).indexOf(t) > -1; })) m += 6;
+        if (low(p.description).indexOf(t) > -1) m += 3;
+        if (low(p.text).indexOf(t) > -1) m += 1;
+        if (!m) return 0;
+        total += m;
+      }
+      return total;
+    }
+    function snippet(p, terms) {
+      var t = low(p.text), pos = -1;
+      for (var i = 0; i < terms.length && pos < 0; i++) pos = t.indexOf(terms[i]);
+      if (pos < 0) return p.description;
+      var s = Math.max(0, pos - 30);
+      return (s > 0 ? '… ' : '') + p.text.slice(s, pos + 90) + ' …';
+    }
+    function mark(el, text, terms) {
+      var lower = low(text), i = 0;
+      while (i < text.length) {
+        var hit = -1, len = 0;
+        for (var k = 0; k < terms.length; k++) {
+          var f = lower.indexOf(terms[k], i);
+          if (f > -1 && (hit < 0 || f < hit)) { hit = f; len = terms[k].length; }
+        }
+        if (hit < 0) { el.appendChild(document.createTextNode(text.slice(i))); break; }
+        if (hit > i) el.appendChild(document.createTextNode(text.slice(i, hit)));
+        var m = document.createElement('mark');
+        m.textContent = text.slice(hit, hit + len);
+        el.appendChild(m);
+        i = hit + len;
+      }
+    }
+    function render(q, data) {
+      var terms = low(q).split(/\s+/).filter(Boolean);
+      box.textContent = '';
+      var found = data.map(function (p) { return { p: p, s: score(p, terms) }; })
+        .filter(function (x) { return x.s > 0; })
+        .sort(function (a, b) { return b.s - a.s; });
+      var head = document.createElement('p');
+      head.className = 'result-count';
+      head.textContent = found.length ? '"' + q + '" 검색 결과 ' + found.length + '건' : '"' + q + '"에 맞는 글이 없습니다. 다른 단어로 찾아보세요.';
+      box.appendChild(head);
+      var ul = document.createElement('ul');
+      ul.className = 'post-list';
+      found.forEach(function (x) {
+        var li = document.createElement('li');
+        if (x.p.category) { var b = document.createElement('span'); b.className = 'badge'; b.textContent = x.p.category; li.appendChild(b); }
+        var a = document.createElement('a');
+        a.className = 'title'; a.href = '/blog/' + x.p.slug + '/';
+        mark(a, x.p.title, terms);
+        li.appendChild(a);
+        var d = document.createElement('p');
+        d.className = 'desc';
+        mark(d, snippet(x.p, terms), terms);
+        li.appendChild(d);
+        ul.appendChild(li);
+      });
+      box.appendChild(ul);
+    }
+    function run() {
+      var q = input.value.trim();
+      if (!q) { box.hidden = true; all.hidden = false; history.replaceState(null, '', '/blog/'); return; }
+      load().then(function (d) {
+        render(q, d); box.hidden = false; all.hidden = true;
+        history.replaceState(null, '', '/blog/?q=' + encodeURIComponent(q));
+      });
+    }
+    var timer;
+    input.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(run, 120); });
+    var params = new URLSearchParams(location.search);
+    if (params.get('q')) { input.value = params.get('q'); run(); }
+    if (params.has('focus') || params.get('q')) input.focus();
+  })();
+</script>

@@ -164,3 +164,46 @@ footer.site .wrap { padding-top: 22px; padding-bottom: 32px; }
 .topic { margin-bottom: 40px; }
 .topic-desc { margin: 0 0 14px; color: var(--muted); font-size: 0.95rem; }
 .more { text-align: center; margin-top: 8px; }
+
+/* 검색, 카테고리 */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.search-box { display: flex; gap: 8px; margin: 18px 0 22px; }
+.search-box input {
+  flex: 1; min-width: 0; font: inherit; padding: 12px 14px;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--text);
+}
+.search-box input:focus { outline: 2px solid var(--brand); border-color: var(--brand); }
+.search-box button {
+  font: inherit; font-weight: 700; padding: 0 18px; border: 0; border-radius: 10px;
+  background: var(--brand); color: #fff; cursor: pointer;
+}
+.hero .search-box { margin-bottom: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+.chip {
+  padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px;
+  background: var(--card); color: var(--text); text-decoration: none; font-size: 0.9rem;
+}
+.chip:hover { border-color: var(--brand); color: var(--brand); }
+.chip.active { background: var(--brand); border-color: var(--brand); color: #fff; }
+.badge {
+  display: inline-block; font-size: 0.75rem; font-weight: 700; color: var(--brand);
+  background: var(--brand-soft); border-radius: 6px; padding: 2px 8px; margin-bottom: 6px;
+}
+.result-count { color: var(--muted); font-size: 0.95rem; margin: 0 0 12px; }
+mark { background: #fff1a8; color: inherit; border-radius: 3px; padding: 0 1px; }
+.cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px; }
+.cat-card {
+  display: flex; flex-direction: column; gap: 4px; padding: 16px;
+  border: 1px solid var(--line); border-radius: 14px; background: var(--card);
+  color: var(--text); text-decoration: none;
+}
+.cat-card:hover { border-color: var(--brand); }
+.cat-card .icon { font-size: 1.6rem; }
+.cat-card .count { font-size: 0.8rem; color: var(--brand); font-weight: 700; }
+.cat-card .desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+.post-list.compact li { padding: 8px 0; }
+.post-list.compact a.title { font-size: 1rem; font-weight: 600; }
+.more-link { margin: 6px 0 0; font-size: 0.92rem; }
+@media (max-width: 640px) { .cat-grid { grid-template-columns: 1fr; } }
+.badge { display: block; width: fit-content; }
+.post-list.compact li { padding: 10px 14px; }

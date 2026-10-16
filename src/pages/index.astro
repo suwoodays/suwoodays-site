@@ -1,18 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getPosts, formatDate } from '../lib/posts';
+import { getPosts, formatDate, CATEGORIES, getPostsByCategory } from '../lib/posts';
 
 const all = getPosts();
 const hub = all.find((p) => p.slug === 'prep-checklist-before-departure');
-
-// 주제별 묶음: 글의 tags 로 자동 분류됩니다. 새 글에 같은 태그만 달면 알아서 들어갑니다.
-const topics = [
-  { name: '출발 전 준비', desc: '보험, 학교, 입국 서류처럼 떠나기 전에 정리한 것들', tags: ['준비', '학교', '입국'] },
-  { name: '치앙마이에서', desc: '아이와 직접 다니며 쓴 비용과 현장 기록', tags: ['치앙마이'] },
-].map((t) => ({
-  ...t,
-  posts: all.filter((p) => p.slug !== hub?.slug && (p.meta.tags ?? []).some((tag) => t.tags.includes(tag))),
-}));
+const sections = CATEGORIES.map((c) => ({
+  ...c,
+  posts: getPostsByCategory(c.key).filter((p) => p.slug !== hub?.slug),
+})).filter((c) => c.posts.length > 0);
+const latest = all.slice(0, 3);
 ---
 
 <Base>
@@ -22,7 +18,11 @@ const topics = [
       초등학생 두 아이와 함께 9개월 세계여행 중인 가족이 직접 겪은 준비, 비용, 시행착오를 기록합니다.
       출발 전에 알았으면 좋았을 것들을 정리해 두었어요.
     </p>
-    <a class="button" href="/blog/">전체 글 보기</a>
+    <form class="search-box" action="/blog/" method="get" role="search">
+      <label class="sr-only" for="hq">글 검색</label>
+      <input id="hq" name="q" type="search" placeholder="궁금한 것을 검색해 보세요 (예: 보험, eSIM, 택시)" autocomplete="off" />
+      <button type="submit">검색</button>
+    </form>
   </section>
 
   {hub && (
@@ -33,20 +33,40 @@ const topics = [
     </a>
   )}
 
-  {topics.filter((t) => t.posts.length > 0).map((t) => (
+  <nav class="cat-grid" aria-label="카테고리">
+    {sections.map((c) => (
+      <a class="cat-card" href={`/category/${c.key}/`}>
+        <span class="icon">{c.icon}</span>
+        <strong>{c.name}</strong>
+        <span class="count">글 {getPostsByCategory(c.key).length}편</span>
+        <span class="desc">{c.desc}</span>
+      </a>
+    ))}
+  </nav>
+
+  <section class="topic">
+    <h2>최근 글</h2>
+    <ul class="post-list">
+      {latest.map((post) => (
+        <li>
+          <a class="title" href={`/blog/${post.slug}/`}>{post.meta.title}</a>
+          <div class="meta">{formatDate(post.meta.date)}</div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  {sections.map((c) => (
     <section class="topic">
-      <h2>{t.name}</h2>
-      <p class="topic-desc">{t.desc}</p>
-      <ul class="post-list">
-        {t.posts.map((post) => (
-          <li>
-            <a class="title" href={`/blog/${post.slug}/`}>{post.meta.title}</a>
-            <div class="meta">{formatDate(post.meta.date)}</div>
-          </li>
+      <h2>{c.icon} {c.name}</h2>
+      <ul class="post-list compact">
+        {c.posts.slice(0, 4).map((post) => (
+          <li><a class="title" href={`/blog/${post.slug}/`}>{post.meta.title}</a></li>
         ))}
       </ul>
+      <p class="more-link"><a href={`/category/${c.key}/`}>{c.name} 전체 보기 →</a></p>
     </section>
   ))}
 
-  <p class="more"><a href="/blog/">전체 글 보기 →</a></p>
+  <p class="more"><a href="/blog/">전체 글 {all.length}편 보기 →</a></p>
 </Base>
