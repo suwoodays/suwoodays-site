@@ -141,6 +141,20 @@ draft: false
 - [ ] 보관이사 계약서·사진·보험 확인
 - [ ] 결제 수단 3종 이상 준비
 
+## 도착한 뒤: 치앙마이에서 한 체험
+
+준비를 마치고 떠난 뒤 치앙마이에서 아이들과 직접 해 본 체험 기록입니다. 비용과 현장 정보를 글마다 정리했습니다.
+
+| 체험 | 한 줄 요약 |
+|---|---|
+| [일일 택시투어](/blog/chiang-mai-private-taxi-day-tour-with-kids/) | 하루 2,000바트로 싸이프레스 레인·엘리핀팜·매키 양목장 |
+| [한국어 가이드 조인투어](/blog/chiang-mai-korean-guide-join-tour-wat-umong-doi-suthep-night/) | 왓우몽·도이수텝 야경, 4인 실결제 120,422원 |
+| [타이거 킹덤](/blog/chiang-mai-tiger-kingdom-with-kids-review/) | 체험 요금과 2026년 2월 폐사 보도, 방문 전 확인할 점 |
+| [왓 쩨디루앙](/blog/chiang-mai-wat-chedi-luang-with-kids/) | 구시가 사원, 입장권 50바트 |
+| [반캉왓](/blog/chiang-mai-baan-kang-wat-leather-notebook-workshop-kids/) | 예술가 마을, 가죽 수첩 만들기 |
+| [무에타이 체험](/blog/chiang-mai-family-muay-thai-yak-siam-gym/) | 4인 물 포함 1,400바트 |
+| [아이와 마사지](/blog/chiang-mai-kids-thai-massage-crystal-aura-nimman/) | 님만해민, 4인 1시간 약 11만 원 |
+
 ## 확인 일지
 
 | 항목 | 상태 |
