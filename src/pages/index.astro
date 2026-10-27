@@ -8,7 +8,7 @@ const sections = CATEGORIES.map((c) => ({
   ...c,
   posts: getPostsByCategory(c.key).filter((p) => p.slug !== hub?.slug),
 })).filter((c) => c.posts.length > 0);
-const latest = all.slice(0, 3);
+const latest = all.slice(0, 5);
 ---
 
 <Base>
@@ -55,18 +55,6 @@ const latest = all.slice(0, 3);
       ))}
     </ul>
   </section>
-
-  {sections.map((c) => (
-    <section class="topic">
-      <h2>{c.icon} {c.name}</h2>
-      <ul class="post-list compact">
-        {c.posts.slice(0, 4).map((post) => (
-          <li><a class="title" href={`/blog/${post.slug}/`}>{post.meta.title}</a></li>
-        ))}
-      </ul>
-      <p class="more-link"><a href={`/category/${c.key}/`}>{c.name} 전체 보기 →</a></p>
-    </section>
-  ))}
 
   <p class="more"><a href="/blog/">전체 글 {all.length}편 보기 →</a></p>
 </Base>
