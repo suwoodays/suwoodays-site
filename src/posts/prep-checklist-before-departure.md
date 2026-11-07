@@ -154,6 +154,8 @@ draft: false
 | [반캉왓](/blog/chiang-mai-baan-kang-wat-leather-notebook-workshop-kids/) | 예술가 마을, 가죽 수첩 만들기 |
 | [무에타이 체험](/blog/chiang-mai-family-muay-thai-yak-siam-gym/) | 4인 물 포함 1,400바트 |
 | [아이와 마사지](/blog/chiang-mai-kids-thai-massage-crystal-aura-nimman/) | 님만해민, 4인 1시간 약 11만 원 |
+| [나이트 사파리](/blog/chiang-mai-night-safari-with-kids/) | 어른 1,200/아이 600바트, 오후 일찍 가야 하는 이유 |
+| [아이 영어학원 Speak Up](/blog/chiang-mai-speak-up-english-school-kids-one-on-one/) | 비수기 1:1 50시간 150만 원 |
 
 ## 확인 일지
 
